@@ -7,4 +7,4 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 User.create(:name => 'Bob', :university_id => 11111111, :email => 'a@a.com', :password => 'password', :type => 'Admin')
-User.create(:name => 'Anne', :university_id => 0000000, :email => 'b@b.com', :password => 'password', :type => 'Student')
+User.create(:name => 'Anne', :university_id => 0000000, :email => 'b@b.com', :password => 'password', :type => 'Instructor')

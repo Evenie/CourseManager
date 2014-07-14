@@ -7,7 +7,6 @@
 #  course_number :string(255)
 #  created_at    :datetime
 #  updated_at    :datetime
-#  instructor_id :integer
 #
 
 require 'test_helper'

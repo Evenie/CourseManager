@@ -10,9 +10,12 @@
       </ul>
     </div>
   <% end %>
-
   <div class="field">
-    <%= f.label :title %><br>
+    <strong> Instructor for this course: </strong></br>
+    <%= current_user.name %>
+  </div>
+  <div class="field">
+    <%= f.label :title %></br>
     <%= f.text_field :title %>
   </div>
   <div class="field">
