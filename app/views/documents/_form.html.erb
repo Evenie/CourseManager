@@ -16,12 +16,8 @@
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :attachable_id %><br>
-    <%= f.number_field :attachable_id %>
-  </div>
-  <div class="field">
-    <%= f.label :attachable_type %><br>
-    <%= f.text_field :attachable_type %>
+    <%= f.label :attachment %><br>
+    <%= f.file_field :file %>
   </div>
   <div class="actions">
     <%= f.submit %>

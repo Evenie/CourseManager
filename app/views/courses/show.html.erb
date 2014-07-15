@@ -26,8 +26,9 @@
 		<li><%= student.name %>
 		</li>
 	<% end %>
-<% end %>	
+<% end %></br>
+<%= link_to 'Add a student', new_student_path(@course)%>	
 			
-</br>
+</br></br></br>
 <%= link_to 'Edit', edit_course_path(@course) %> |
 <%= link_to 'Back', courses_path %>

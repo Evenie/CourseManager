@@ -6,13 +6,7 @@
 </p>
 
 <p>
-  <strong>Attachable:</strong>
-  <%= @document.attachable_id %>
-</p>
-
-<p>
-  <strong>Attachable type:</strong>
-  <%= @document.attachable_type %>
+	<%= link_to "Download", @document.file.url(:original, false)%>
 </p>
 
 <%= link_to 'Edit', edit_document_path(@document) %> |

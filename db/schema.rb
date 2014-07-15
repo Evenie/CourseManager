@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140714154637) do
+ActiveRecord::Schema.define(version: 20140715150007) do
 
   create_table "admins", force: true do |t|
   end
@@ -43,6 +43,10 @@ ActiveRecord::Schema.define(version: 20140714154637) do
     t.string   "attachable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
   end
 
   create_table "instructors", force: true do |t|

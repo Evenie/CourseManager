@@ -8,3 +8,4 @@
 
 User.create(:name => 'Bob', :university_id => 11111111, :email => 'a@a.com', :password => 'password', :type => 'Admin')
 User.create(:name => 'Anne', :university_id => 0000000, :email => 'b@b.com', :password => 'password', :type => 'Instructor')
+User.create(:name => 'Darby', :university_id => 2222222, :email => 'c@c.com', :password => 'password', :type => 'Instructor')
