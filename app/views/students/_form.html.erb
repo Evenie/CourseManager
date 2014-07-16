@@ -24,12 +24,11 @@
     <%= f.password_field :password %>
   </div>
   <div class="actions">
-	<%= f.label :course_id %>
-	<%= text_field_tag :course_id %> 
-  </div>
-  <div class="actions">
 	<%= f.label 'University id' %>
 	<%= f.number_field :university_id %> 
+  </div>
+  <div>
+	<%= hidden_field_tag :course_id, params[:course_id]%>  
   </div>
    
   <div>

@@ -25,7 +25,7 @@ class StudentsController < ApplicationController
   # POST /students.json
   def create
     @student = Student.new(student_params)
-    @student.courses << Course.find(params[:course_id])
+    @student.courses << Course.find(params[:course_id]) unless params[:course_id].blank?
 
     respond_to do |format|
       if @student.save

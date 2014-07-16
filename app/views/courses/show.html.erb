@@ -27,7 +27,8 @@
 		</li>
 	<% end %>
 <% end %></br>
-<%= link_to 'Add a student', new_student_path(@course)%>	
+
+<%= link_to 'Add a student', new_student_path(:course_id => @course.id)%>	
 			
 </br></br></br>
 <%= link_to 'Edit', edit_course_path(@course) %> |
