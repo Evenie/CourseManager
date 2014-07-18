@@ -8,6 +8,7 @@
 #  assignment_id :integer
 #  created_at    :datetime
 #  updated_at    :datetime
+#  student_id    :integer
 #
 
 require 'test_helper'

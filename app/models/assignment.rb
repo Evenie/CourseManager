@@ -6,7 +6,7 @@
 #  created_at :datetime
 #  updated_at :datetime
 #  course_id  :integer
-#  student_id :integer
+#  title      :string(255)
 #
 
 class Assignment < ActiveRecord::Base
@@ -14,4 +14,9 @@ class Assignment < ActiveRecord::Base
   belongs_to :students
   has_many :submissions
   has_many :documents, :as => :attachable
+  
+  def associated_course
+    course = Course.find(course_id)
+  end
+  
 end

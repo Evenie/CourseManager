@@ -28,7 +28,16 @@
 	<% end %>
 <% end %></br>
 
-<%= link_to 'Add a student', new_student_path(:course_id => @course.id)%>	
+<%= link_to 'Add a student', new_student_path(:course_id => @course.id)%>
+</br></br>
+<strong>Assignments:</strong></br>
+<% if @course.assignments %>
+	<% @course.assignments.each do |assignment| %>
+		<li><%= assignment.title %>
+		</li>
+	<% end %>
+<% end %></br>
+<%= link_to 'Add an assignment', new_assignment_path(:course_id => @course.id)%>	
 			
 </br></br></br>
 <%= link_to 'Edit', edit_course_path(@course) %> |
