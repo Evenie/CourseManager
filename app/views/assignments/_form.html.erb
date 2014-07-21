@@ -17,6 +17,14 @@
   </div>
   
   <%= hidden_field_tag :course_id, params[:course_id] %>
+  
+  <%= f.fields_for :document, :html => {:multipart => true} do |d| %>
+    <div class="field">
+  	  <%= d.label :attachment %>
+	  <%= d.file_field :file %>
+	</div>
+	<%= hidden_field_tag :attachable_type, "Assignment"%>
+  <% end %> 		
 
   <div class="actions">
     <%= f.submit %>

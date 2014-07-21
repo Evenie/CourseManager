@@ -8,7 +8,14 @@
   <strong>Course:</strong>
   <%= @assignment.associated_course.title %>
 </p>
-
+<p>
+  <strong>Documents:</strong></br>
+  <% if @assignment.documents %>
+    <% @assignment.documents.each do |document| %>
+	  <li><%= document.title %></li>
+	<% end %>
+  <% end %>
+</p>
 
 <%= link_to 'Edit', edit_assignment_path(@assignment) %> |
 <%= link_to 'Back', assignments_path %>

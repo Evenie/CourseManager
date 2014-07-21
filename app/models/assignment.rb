@@ -15,6 +15,8 @@ class Assignment < ActiveRecord::Base
   has_many :submissions
   has_many :documents, :as => :attachable
   
+  accepts_nested_attributes_for :documents
+  
   def associated_course
     course = Course.find(course_id)
   end

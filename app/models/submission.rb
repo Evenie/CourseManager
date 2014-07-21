@@ -13,6 +13,5 @@
 
 class Submission < ActiveRecord::Base
   belongs_to :assignments
-  has_attached_file :file
-  do_not_validate_attachment_file_type :file
+  has_many :documents, :as => :attachable
 end

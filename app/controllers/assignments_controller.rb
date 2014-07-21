@@ -14,7 +14,14 @@ class AssignmentsController < ApplicationController
 
   # GET /assignments/new
   def new
-    @assignment = Assignment.new
+    if current_user.type.eql? "Instructor"
+      @assignment = Assignment.new
+      @document = Document.new
+    elsif current_user.type.eql? "Student"
+      redirect_to :courses, :alert => 'You are not authorized to create assignments.'
+    else 
+      redirect_to :instructors, :alert => 'You are not authorized to create assignments.'
+    end
   end
 
   # GET /assignments/1/edit
@@ -28,6 +35,11 @@ class AssignmentsController < ApplicationController
     @assignment.course_id = params[:course_id]
     respond_to do |format|
       if @assignment.save
+        document_params = ActionController::Parameters.new(params[:assignment][:document]);
+        document_params.permit!
+        @document = Document.new(document_params)
+        @document.attachable_type = params[:attachable_type]
+        @document.attachable_id = @assignment.id
         format.html { redirect_to @assignment, notice: 'Assignment was successfully created.' }
         format.json { render :show, status: :created, location: @assignment }
       else
