@@ -17,6 +17,10 @@
 class Document < ActiveRecord::Base
   belongs_to :attachable, :polymorphic => true
   has_attached_file :file
-  do_not_validate_attachment_file_type :file
+  validates_attachment :file, :presence => true,
+    :content_type => { :content_type => ["application/pdf", "application/msword", "text/plain"] },
+    :size => { :in => 0..10.kilobytes }
+      
+    
   
 end

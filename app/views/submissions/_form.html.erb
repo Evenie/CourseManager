@@ -11,18 +11,31 @@
     </div>
   <% end %>
 
+  <%= hidden_field_tag :course_id, params[:course_id] %>
+  <%= hidden_field_tag :assignment_id, params[:assignment_id] %>
+
+ <% if current_user.type.eql? "Student"%> 
+  <%= f.fields_for :document, :html => {:multipart => true} do |d| %>
+    <div class="field">
+	  <%= d.label :file_description %>
+      <%= d.text_field :title %>
+    </div>
+    <div class="field">
+  	  <%= d.label :attachment %>
+	  <%= d.file_field :file %>
+	</div>
+  <% end %>
+<% end %>
+<% if current_user.type.eql? "Instructor" %>
   <div class="field">
-    <%= f.label :score %><br>
-    <%= f.number_field :score %>
+    <%= f.label :score %>
+	<%= f.number_field :score%>
   </div>
   <div class="field">
-    <%= f.label :grade %><br>
-    <%= f.text_field :grade %>
+    <%= f.label :grade %>
+	<%= select :submission, :grade, Submission.grades, {:include_blank => :true} %>
   </div>
-  <div class="field">
-    <%= f.label :attachment %><br>
-    <%= f.file_field :file %>
-  </div>
+<% end %>
   <div class="actions">
     <%= f.submit %>
   </div>

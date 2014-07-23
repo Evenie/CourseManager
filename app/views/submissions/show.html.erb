@@ -1,18 +1,22 @@
+<h2> Submission for <%= @submission.assignment.title %> </h2>
 <p id="notice"><%= notice %></p>
 
 <p>
   <strong>Score:</strong>
-  <%= @submission.score %>
+  <% if @submission.score == nil %>
+    Not yet graded
+  <% else %> 
+    <%= @submission.score %>
+  <% end %>
 </p>
 
 <p>
   <strong>Grade:</strong>
-  <%= @submission.grade %>
-</p>
-
-<p>
-  <strong>Assignment:</strong>
-  <%= @submission.assignment_id %>
+  <% if @submission.grade == nil %>
+    Not yet graded
+  <% else %>
+    <%= @submission.grade %>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_submission_path(@submission) %> |

@@ -12,8 +12,10 @@
 class Assignment < ActiveRecord::Base
   belongs_to :courses
   belongs_to :students
-  has_many :submissions
+  has_many :submissions, :dependent => :destroy
   has_many :documents, :as => :attachable
+  
+  validates :title, format: {with: /\A[a-zA-Z0-9 ]+\z/, message: "The title should include letters and digits only" }
   
   accepts_nested_attributes_for :documents
   

@@ -14,4 +14,19 @@
 class Submission < ActiveRecord::Base
   belongs_to :assignments
   has_many :documents, :as => :attachable
+  
+  accepts_nested_attributes_for :documents
+  
+  def assignment
+    Assignment.find(assignment_id)
+  end
+  
+  def student
+    Student.find(student_id)
+  end
+  
+  def self.grades
+    grades = ["A", "B", "C", "D", "F", "I"]
+  end
+  
 end

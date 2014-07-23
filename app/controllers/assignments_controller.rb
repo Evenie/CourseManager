@@ -38,8 +38,9 @@ class AssignmentsController < ApplicationController
         document_params = ActionController::Parameters.new(params[:assignment][:document]);
         document_params.permit!
         @document = Document.new(document_params)
-        @document.attachable_type = params[:attachable_type]
+        @document.attachable_type = 'Assignment'
         @document.attachable_id = @assignment.id
+        @document.save
         format.html { redirect_to @assignment, notice: 'Assignment was successfully created.' }
         format.json { render :show, status: :created, location: @assignment }
       else
@@ -68,7 +69,7 @@ class AssignmentsController < ApplicationController
   def destroy
     @assignment.destroy
     respond_to do |format|
-      format.html { redirect_to assignments_url, notice: 'Assignment was successfully destroyed.' }
+      format.html { redirect_to course_url(@assignment.course_id), notice: 'Assignment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

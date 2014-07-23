@@ -1,15 +1,11 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @assignment.title %>
-</p>
-<p>
+<h1>Assignment: <%= @assignment.title %></h1>
+	
   <strong>Course:</strong>
   <%= @assignment.associated_course.title %>
 </p>
 <p>
-  <strong>Documents:</strong></br>
+  <strong>Files:</strong></br>
   <% if @assignment.documents %>
     <% @assignment.documents.each do |document| %>
 	  <li><%= document.title %></li>
@@ -17,5 +13,18 @@
   <% end %>
 </p>
 
-<%= link_to 'Edit', edit_assignment_path(@assignment) %> |
-<%= link_to 'Back', assignments_path %>
+<% if current_user.type.eql? "Student" %>
+	<%= link_to 'Make a submission', new_submission_path(:assignment_id => @assignment.id)%>
+<% end %>
+<% if current_user.type.eql? "Instructor"%>
+	<%= link_to 'Edit Assignment', edit_assignment_path(@assignment) %></br></br>
+    <% if @assignment.submissions %>
+	  <strong>Submissions:<strong></br></br>
+		  <% @assignment.submissions.each do |submission| %>
+		    <b><%= submission.student.name %></b>
+			<%= link_to submission.created_at.to_s, edit_submission_path(submission.id)%></br>
+		 <% end %> 		
+	<% end %>
+<% end %>
+</br></br>
+<%= link_to 'Back', course_path(@assignment.course_id) %>

@@ -25,9 +25,16 @@ class SubmissionsController < ApplicationController
   # POST /submissions.json
   def create
     @submission = Submission.new(submission_params)
-
+    @submission.assignment_id = params[:assignment_id]
+    @submission.student_id = current_user.id
     respond_to do |format|
       if @submission.save
+        document_params = ActionController::Parameters.new(params[:submission][:document]);
+        document_params.permit!
+        @document = Document.new(document_params)
+        @document.attachable_type = 'Submission'
+        @document.attachable_id = @submission.id
+        @document.save
         format.html { redirect_to @submission, notice: 'Submission was successfully created.' }
         format.json { render :show, status: :created, location: @submission }
       else

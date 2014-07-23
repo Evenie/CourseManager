@@ -20,24 +20,27 @@
   <% end %>
 </p>
 
-<strong>Students:</strong></br>
-<% if @course.students %>
-	<% @course.students.each do |student| %>
-		<li><%= student.name %>
-		</li>
+<% if current_user.type.eql? "Instructor"%>
+  <strong>Students:</strong></br>
+  <% if @course.students %>
+    <% @course.students.each do |student| %>
+	  <li><%= link_to student.name, student_path(student.id) %></li>
 	<% end %>
-<% end %></br>
-
-<%= link_to 'Add a student', new_student_path(:course_id => @course.id)%>
+  <% end %></br>
+  <%= link_to 'Add a student', new_student_path(:course_id => @course.id)%>
+<% end %>
 </br></br>
 <strong>Assignments:</strong></br>
 <% if @course.assignments %>
 	<% @course.assignments.each do |assignment| %>
-		<li><%= assignment.title %>
+		<li><%= link_to assignment.title, assignment_path(assignment.id) %> &nbsp;
+			<%= link_to 'Destroy', assignment, method: :delete, data: {confirm: 'Are you sure?'} %>
 		</li>
 	<% end %>
 <% end %></br>
-<%= link_to 'Add an assignment', new_assignment_path(:course_id => @course.id)%>	
+<% if current_user.type.eql? "Instructor"%>
+  <%= link_to 'Add an assignment', new_assignment_path(:course_id => @course.id)%>
+<% end %>	
 			
 </br></br></br>
 <%= link_to 'Edit', edit_course_path(@course) %> |
