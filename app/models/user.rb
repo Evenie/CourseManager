@@ -26,6 +26,8 @@ class User < ActiveRecord::Base
   
   has_and_belongs_to_many :courses
   
+  validates :name, format: {with: /\A[A-Za-z]+ [A-Za-z]+\z/, message: " -  First Last" }
+  
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 end

@@ -15,7 +15,7 @@ class Assignment < ActiveRecord::Base
   has_many :submissions, :dependent => :destroy
   has_many :documents, :as => :attachable
   
-  validates :title, format: {with: /\A[a-zA-Z0-9 ]+\z/, message: "The title should include letters and digits only" }
+  validates :title, format: {with: /\A[a-zA-Z0-9 ]+\z/, message: " -  letters, digits, and whitespace only" }
   
   accepts_nested_attributes_for :documents
   

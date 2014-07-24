@@ -20,14 +20,34 @@
 #  type                   :string(255)
 #
 
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+anne:
+ name: Anne Doe
+ university_id: 2000000
+ email: x@x.com
+ encrypted_password: password1
+ type: Admin
 
-# This model initially had no columns defined.  If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-#  column: value
+bob: 
+ name: Bob Doe
+ university_id: 2100000
+ email: y@y.com
+ encrypted_password: password2
+ type: Instructor
+ 
+jill: 
+ name: Jill Doe
+ university_id: 2200000
+ email: z@z.com
+ encrypted_password: password3
+ type: Student
+  
+ # Or we can do...
+ 
+<% 10.times do |n| %>
+user_<%= n %>:
+  name: <%= "user" %>
+  university_id: <%= 200000 + n %>
+  email: <%= "user#{n}@example.com" %>
+  encrypted_password: <%= "password#{n}" %>
+  type: <%= "Student" %>
+<% end %>

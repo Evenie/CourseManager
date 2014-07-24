@@ -23,7 +23,22 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  
+   test "Users have the proper name" do
+     assert_equal users(:anne).name, 'Anne'
+     assert_equal users(:bob).name, 'Bob'
+     assert_equal users(:jill).name, 'Jill'
+   end
+   
+   test "Users have the proper type" do
+     assert_equal users(:anne).type, 'Admin'
+     assert_equal users(:bob).type, 'Instructor'
+     assert_equal users(:jill).type, 'Student'
+   end
+   
+   test "Users should not save without name" do
+     assert true
+   end
+   
+  
 end
